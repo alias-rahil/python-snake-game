@@ -6,10 +6,13 @@ import random
 
 
 def generateFood():
-    while True:
-        food = random.choice(range(19 * 19))
-        if food != head and food not in tail:
-            break
+    if " " in snake:
+        while True:
+            food = random.choice(range(19 * 19))
+            if food != head and food not in tail:
+                break
+    else:
+        food = None
     return food
 
 
@@ -44,6 +47,8 @@ def display():
     print(f"Score: {len(tail)}.")
     if badMove:
         print("Bad Move!")
+    else:
+        print("         ")
     return None
 
 
@@ -107,7 +112,8 @@ def start():
                 if head == food:
                     tail.append(None)
                     food = generateFood()
-                snake[food] = "O"
+                if food:
+                    snake[food] = "O"
                 display()
                 time.sleep(0.05)
         else:
