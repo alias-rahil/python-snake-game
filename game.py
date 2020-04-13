@@ -41,7 +41,7 @@ def display():
     +{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}+
     +++++++++++++++++++++
     """.format(*snake))
-    print(f"Score: {len(tail)}")
+    print(f"Score: {len(tail)}.")
     if badMove:
         print("Bad Move!")
     return None
