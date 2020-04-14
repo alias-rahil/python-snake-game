@@ -5,6 +5,28 @@ import threading
 import random
 
 
+def declarations():
+    global direction
+    global badMove
+    global flag
+    global tail
+    global snake
+    global head
+    global food
+    direction = None
+    head = 180
+    tail = []
+    snake = [" " for i in range(19 * 19)]
+    snake[head] = "X"
+    badMove = False
+    flag = True
+    for i in tail:
+        snake[i] = "-"
+    food = generateFood()
+    snake[food] = "O"
+    return None
+
+
 def generateFood():
     if " " in snake:
         while True:
@@ -155,28 +177,6 @@ def listener():
     updater = keyboard.Listener(on_press=main)
     updater.start()
     updater.join()
-    return None
-
-
-def declarations():
-    global direction
-    global badMove
-    global flag
-    global tail
-    global snake
-    global head
-    global food
-    direction = None
-    head = 180
-    tail = []
-    snake = [" " for i in range(19 * 19)]
-    snake[head] = "X"
-    badMove = False
-    flag = True
-    for i in tail:
-        snake[i] = "-"
-    food = generateFood()
-    snake[food] = "O"
     return None
 
 
