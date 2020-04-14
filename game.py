@@ -139,10 +139,10 @@ def start():
                     snake[food] = "O"
                 display()
                 flag = True
-                time.sleep(0.5)
+                time.sleep(0.1)
         else:
             display()
-            time.sleep(0.5)
+            time.sleep(0.1)
     return None
 
 
