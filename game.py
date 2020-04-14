@@ -57,6 +57,7 @@ def start():
     global snake
     global head
     global food
+    global flag
     while True:
         if direction:
             if head in range(19) and direction == "up":
@@ -115,27 +116,33 @@ def start():
                 if food:
                     snake[food] = "O"
                 display()
-                time.sleep(0.05)
+                flag = True
+                time.sleep(0.1)
         else:
             display()
-            time.sleep(0.05)
+            time.sleep(0.1)
     return None
 
 
 def main(key):
     global direction
     global badMove
+    global flag
     if badMove:
         badMove = False
     key = str(key)
-    if key == "Key.up" and direction != "down":
+    if key == "Key.up" and direction != "down" and flag:
         direction = "up"
-    elif key == "Key.down" and direction != "up":
+        flag = False
+    elif key == "Key.down" and direction != "up" and flag:
         direction = "down"
-    elif key == "Key.right" and direction != "left":
+        flag = False
+    elif key == "Key.right" and direction != "left" and flag:
         direction = "right"
-    elif key == "Key.left" and direction != "right":
+        flag = False
+    elif key == "Key.left" and direction != "right" and flag:
         direction = "left"
+        flag = False
     else:
         badMove = True
     return None
@@ -156,6 +163,7 @@ tail = []
 snake = [" " for i in range(19 * 19)]
 snake[head] = "X"
 badMove = False
+flag = True
 for i in tail:
     snake[i] = "-"
 food = generateFood()
