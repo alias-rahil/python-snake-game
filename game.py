@@ -1,8 +1,8 @@
 from pynput import *
 import os
 import time
-import threading
 import random
+import threading
 
 
 def declarations():
@@ -139,10 +139,10 @@ def start():
                     snake[food] = "O"
                 display()
                 flag = True
-                time.sleep(0.1)
+                time.sleep(0.5)
         else:
             display()
-            time.sleep(0.1)
+            time.sleep(0.5)
     return None
 
 
@@ -153,16 +153,16 @@ def main(key):
     if badMove:
         badMove = False
     key = str(key)
-    if key == "Key.up" and direction != "down" and flag:
+    if key == "Key.up" and direction != "down" and flag and direction != "up":
         direction = "up"
         flag = False
-    elif key == "Key.down" and direction != "up" and flag:
+    elif key == "Key.down" and direction != "up" and flag and direction != "down":
         direction = "down"
         flag = False
-    elif key == "Key.right" and direction != "left" and flag:
+    elif key == "Key.right" and direction != "left" and flag and direction != "right":
         direction = "right"
         flag = False
-    elif key == "Key.left" and direction != "right" and flag:
+    elif key == "Key.left" and direction != "right" and flag and direction != "left":
         direction = "left"
         flag = False
     else:
