@@ -149,6 +149,7 @@ def main(key):
 
 
 def listener():
+    declarations()
     t = threading.Thread(target=start)
     t.start()
     updater = keyboard.Listener(on_press=main)
@@ -157,15 +158,26 @@ def listener():
     return None
 
 
-direction = None
-head = 180
-tail = []
-snake = [" " for i in range(19 * 19)]
-snake[head] = "X"
-badMove = False
-flag = True
-for i in tail:
-    snake[i] = "-"
-food = generateFood()
-snake[food] = "O"
+def declarations():
+    global direction
+    global badMove
+    global flag
+    global tail
+    global snake
+    global head
+    global food
+    direction = None
+    head = 180
+    tail = []
+    snake = [" " for i in range(19 * 19)]
+    snake[head] = "X"
+    badMove = False
+    flag = True
+    for i in tail:
+        snake[i] = "-"
+    food = generateFood()
+    snake[food] = "O"
+    return None
+
+
 listener()
